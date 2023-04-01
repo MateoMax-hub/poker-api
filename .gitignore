@@ -1,0 +1,20 @@
+
+## build folder
+dist
+build
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+
+# dotenv environment variables file
+.env
+.env.test
+
+# .vscode Local files
+.vscode/
+
+# End of https://www.gitignore.io/api/node,macos
+package-lock.json
