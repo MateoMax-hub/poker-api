@@ -23,6 +23,7 @@ io.on("connection", (socket) => {
   socketEndPoints.connectRoom(socket);
   socketEndPoints.getOthersData(socket);
   socketEndPoints.reciveOthersData(socket);
+  socketEndPoints.handleHand(socket);
 });
 
 server.listen(process.env.PORT);
