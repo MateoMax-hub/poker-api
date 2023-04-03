@@ -26,4 +26,10 @@ socketEndPoints.point = (socket) => {
   });
 };
 
+socketEndPoints.handleHand = (socket) => {
+  socket.on('handle hand', (data) => {
+    socket.to(data.room).emit('handle hand response', { show: data.show });
+  });
+};
+
 export default socketEndPoints;
