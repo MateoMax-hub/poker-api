@@ -9,19 +9,20 @@ socketEndPoints.connectRoom = (socket) => {
 
 socketEndPoints.getOthersData = (socket) => {
   socket.on("getOthersDataFe 1", (data) => {
-    socket.to(data.room).emit('getOthersDataBe 2', { requester: data.socketId });
+    socket.to(data.room).emit('getOthersDataBe 2', { requester: data.socketId, requesterName: data.name });
   });
 };
 
 socketEndPoints.reciveOthersData = (socket) => {
   socket.on("getOthersDataFe 3", (data) => {
-    socket.to(data.requester).emit('getOthersDataBe 4', { card: data.card, sender: socket.id });
+    socket.to(data.requester).emit('getOthersDataBe 4', { card: data.card, sender: socket.id, name: data.name });
   });
 };
 
 socketEndPoints.point = (socket) => {
   socket.on('point', (data) => {
-    socket.to(data.room).emit('point response', { card: data.card, sender: data.sender });
+    const { card, sender, senderName } = data;
+    socket.to(data.room).emit('point response', { card, sender, senderName });
   });
 };
 
