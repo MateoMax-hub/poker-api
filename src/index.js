@@ -24,6 +24,7 @@ io.on("connection", (socket) => {
   socketEndPoints.getOthersData(socket);
   socketEndPoints.reciveOthersData(socket);
   socketEndPoints.handleHand(socket);
+  socketEndPoints.disconnect(socket, io);
 });
 
 server.listen(process.env.PORT);
