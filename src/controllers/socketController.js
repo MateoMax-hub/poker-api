@@ -32,4 +32,13 @@ socketEndPoints.handleHand = (socket) => {
   });
 };
 
+socketEndPoints.disconnect = (socket, io) => {
+  socket.on('disconnecting', () => {
+    const array = Array.from(io.sockets.adapter.sids)
+    const disconnectSocketData = array.find((socketData) => socketData[0] === socket.id) 
+    const room = Array.from(disconnectSocketData[1])[1]
+    socket.to(room).emit('player disconnected', { player: socket.id })
+  });
+};
+
 export default socketEndPoints;
